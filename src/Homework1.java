@@ -3,17 +3,17 @@ import java.util.Scanner;
 
 public class Homework1 {
     public static void main (String [] args) throws IOException {
-        File bankFile = new File("Banklog.txt");
+        File bankFile = new File("banklog.txt");
         Scanner scan = new Scanner(System.in);
         boolean quit = false;
-        FileWriter fInput = new FileWriter("Banklog.txt", true);
+        FileWriter fInput = new FileWriter("banklog.txt", true);
         PrintWriter printFile= new PrintWriter((fInput));
         Scanner fileScan = new Scanner(bankFile);
 
-        float balance = 1000f;
+        double balance = 1000f;
         int choice = 0;
-        float withdrawAmt;
-        float depositAmt;
+        double withdrawAmt;
+        double depositAmt;
         //float newBalance;
 
 
@@ -51,28 +51,28 @@ public class Homework1 {
 
                 case 2://2nd Case used to withdraw money from account.
                     System.out.println("Enter amount of money to withdraw from bank account: ");
-                    withdrawAmt = scan.nextInt();
+                    withdrawAmt = scan.nextDouble();
                     if(0 > withdrawAmt || withdrawAmt > balance){
                         System.out.println("Cannot withdraw more than the current balance.");
                     }else{
                     balance = balance - withdrawAmt;
                     printFile.println("Withdrawal of $" + withdrawAmt + ". Current balance: $" + balance);
-                    System.out.println(lineNumber + ": Withdrawal of $" + withdrawAmt + ". Current balance: $" + balance);
-                    lineNumber++;
+                    System.out.println("Withdrawal of $" + withdrawAmt + ". Current balance: $" + balance);
+
                     printFile.flush();
                     }
                     break;
 
                 case 3://3rd Case used to deposit money into account.
                     System.out.println("Enter amount of money to deposit into bank account: ");
-                    depositAmt = scan.nextInt();
+                    depositAmt = scan.nextDouble();
                     if(depositAmt < 0){
                         System.out.println("Cannot deposit a negative amount.");
                     }else {
                         balance = balance + depositAmt;
                         printFile.println("Deposit of $" + depositAmt + ". Current balance: $" + balance);
                         System.out.println("Deposit of $" + depositAmt + ". Current balance: $" + balance);
-                        lineNumber++;
+
                         printFile.flush();
                     }
                     break;
